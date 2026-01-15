@@ -1,39 +1,29 @@
-import { BrowserRouter, Routes , Route} from "react-router-dom";
-import Home from "./page/Home";
-import Dashboard from "./page/Dashboard";
-import { UserProfile } from "./component/UserProfile";
-import Pre01 from "./page/Pre01";
-
 import React from "react";
+import Pre01 from "./page/Pre01";
+import { BrowserRouter , Routes , Route } from "react-router-dom";
 
-interface userType {
-  username : string;
-  role : string;
-}
 
-const userData : userType = {
+const userDetail = {
   username : 'thanawit' ,
   role : 'admin'
 }
 
-export const userContext = React.createContext<userType | null >(null)
+export const userProfile = React.createContext<any>(null)
 
 function App() {
 
 
+
+
   return (
 <>
-
-<userContext.Provider value={userData}>
-<BrowserRouter>
-      <Routes> 
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/pre01" element ={<Pre01 />}> </Route>
-      </Routes>
-    </BrowserRouter>
-</userContext.Provider>
+<userProfile.Provider value={userDetail}>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/home" element ={<Pre01 />} />
+    </Routes>
+  </BrowserRouter>
+</userProfile.Provider>
 </> 
  )
 }
